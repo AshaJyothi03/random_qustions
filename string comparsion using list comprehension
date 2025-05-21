@@ -1,0 +1,6 @@
+#string comapasion using list comprehension
+str1=["apple","mango","banana"]
+str2=["apple","mango","cherry"]
+new_list=""
+new_list=[i for i in str1 if i in str2]
+print(new_list)
