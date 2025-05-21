@@ -1,0 +1,10 @@
+import pandas as pd
+import numpy as np
+
+# Example DataFrame
+df = pd.DataFrame({'name': ['Alice', 'Bob', 'Charlie', 'David']})
+
+# Add a column with random integers between 10 and 100
+df['random_number'] = np.random.randint(10, 101, size=len(df))
+
+df['random_number']
