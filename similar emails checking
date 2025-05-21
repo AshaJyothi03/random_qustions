@@ -1,0 +1,101 @@
+
+
+
+'''
+Every valid email consists of a local name and a domain name, separated by the '@' sign. Besides lowercase letters, the email may contain one or more '.' or '+'.
+
+
+
+If you add periods '.' between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name. Note that this rule does not apply to domain names.
+
+
+
+If you add a plus '+' in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered. Note that this rule does not apply to domain names.
+
+
+
+It is possible to use both of these rules at the same time.
+
+
+
+Given an array of 'N' strings 'emails' where we send one email to each emails[i], return the number of different addresses that actually receive mails.
+
+
+
+For Example :
+Let 'emails' = ["test.email+alex@ninjas.com", "test.e.mail+bob.case@ninjas.com", "testemail@ninjas.com"].
+We need to find the number of unique email addresses after applying the rules.
+
+The first email "test.email+alex@ninjas.com":
+The local name is "test.email+alex" and the domain name is "ninjas.com".
+Applying the rules to the local name:
+Remove '.' -> "testemail+alex"
+Ignore everything after '+' -> "testemail"
+The processed email address is "testemail@ninjas.com".
+
+The second email "test.e.mail+bob.case@ninjas.com":
+The local name is "test.e.mail+bob.case" and the domain name is "ninjas.com".
+Applying the rules to the local name:
+Remove '.' -> "testemail+bob.case"
+Ignore everything after '+' -> "testemail"
+The processed email address is "testemail@ninjas.com".
+
+The third email "testemail@ninjas.com":
+The local name is "testemail" and the domain name is "ninjas.com".
+No '.' or '+' in the local name.
+The processed email address is "testemail@ninjas.com".
+
+The unique processed email addresses are {"testemail@ninjas.com"}.
+Therefore, the number of different addresses that actually receive mails is 1.
+Detailed explanation ( Input/output format, Notes, Images )
+Constraints :
+1 <= 'N' <= 100
+1 <= length of emails[i] <= 100
+emails[i] consists of lowercase letters, '.', '+', and '@'.
+Each emails[i] contains exactly one '@' character.
+The local and domain names are non-empty.
+
+Time Limit: 1 sec
+Sample Input 1 :
+3
+a@ninjas.com b@ninjas.com c@ninjas.com
+Sample Output 1 :
+3
+Explanation of sample input 1 :
+The given emails are ["a@ninjas.com","b@ninjas.com","c@ninjas.com"].
+The first email "a@ninjas.com": local name "a", domain name "ninjas.com". Processed: "a@ninjas.com".
+The second email "b@ninjas.com": local name "b", domain name "ninjas.com". Processed: "b@ninjas.com".
+The third email "c@ninjas.com": local name "c", domain name "ninjas.com". Processed: "c@ninjas.com".
+All three processed emails are unique: {"a@ninjas.com", "b@ninjas.com", "c@ninjas.com"}.
+Thus, the answer is 3.
+Sample Input 2 :
+3
+test.email+alex@ninjas.com test.email.goo+ciao@ninjas.com testemail@ninjas.com
+Sample Output 2 :
+2
+
+
+
+'''
+
+from typing import List
+
+def count_unique_emails(emails: List[str]) -> int:
+    unique_emails = set()
+
+    for email in emails:
+        local, domain = email.split('@')
+
+        # Ignore everything after '+'
+        local = local.split('+')[0]
+
+        # Remove all '.' from local part
+        local = local.replace('.', '')
+
+        # Form the final processed email
+        cleaned_email = f"{local}@{domain}"
+
+        # Add to the set of unique emails
+        unique_emails.add(cleaned_email)
+
+    return len(unique_emails)
