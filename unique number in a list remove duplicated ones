@@ -1,0 +1,10 @@
+#find unique number in a list remove duplicated ones
+
+my_list = [1,2,3,1,2,3,4,5,6,4] # Assign the list to a variable (e.g., my_list)
+unique_numbers = [] # Initialize an empty list to store unique numbers
+
+for i in my_list: # Iterate through the list
+    if i not in unique_numbers: # Check if i is already in the list of unique numbers
+        unique_numbers.append(i) # Append to the unique numbers list
+
+print(unique_numbers) # Print the unique numbers
