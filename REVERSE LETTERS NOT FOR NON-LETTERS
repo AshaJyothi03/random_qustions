@@ -1,0 +1,25 @@
+def reverse_only_letters(s):
+    # Step 1: Create a list of all the letters in the string (ignoring non-letter characters)
+    letters = []
+    for char in s:
+        if char.isalpha():
+            letters.append(char)
+
+    # Step 2: Create a new list to build the final result
+    result = []
+
+    # Step 3: Go through the original string
+    for char in s:
+        if char.isalpha():
+            # If it's a letter, pop the last letter from the list and add it
+            result.append(letters.pop())
+        else:
+            # If it's not a letter, just add it as-is
+            result.append(char)
+
+    # Step 4: Join the list into a string and return it
+    return ''.join(result)
+
+# Example usage
+s = "a-bC-dEf-ghIj"
+print(reverse_only_letters(s))  # Output: "j-Ih-gfE-dCba"
