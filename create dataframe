@@ -1,0 +1,8 @@
+import pandas as pd
+import os
+sd1=pd.DataFrame(columns=["SNO","SNAME","COURSE","ADDRESS"])
+sd1.loc[0]=["547","ASHA","CSE","GUNTUR"]
+sd1.loc[1]=["501","MOUNIKA","CSE","GUNTUR"]
+sd1.loc[2]=["537","Prajju","CSE","GUNTUR"]
+sd1.loc[3]=["503","NIKITA","CSE","GUNTUR"]
+print(sd1)
