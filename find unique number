@@ -1,0 +1,13 @@
+nums = [1, 2, 2, 3, 4, 4, 5]
+unique_only = [x for x in nums if nums.count(x) == 1]
+print(unique_only)
+
+------------------- OR--------------
+
+
+from collections import Counter
+nums = [1, 2, 2, 3, 4, 4, 5]
+count = Counter(nums)
+print(count)
+unique_only = [x for x in nums if count[x] == 1]
+print(unique_only)
